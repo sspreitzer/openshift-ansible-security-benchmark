@@ -1,3 +1,18 @@
 #!/bin/bash -e
 
-ansible-playbook -i inventory run.yml
+echo "---> Running Ansible Playbooks ${ANSIBLE_PLAYBOOKS}"
+pushd src/
+if [ -z "${ANSIBLE_PLAYBOOKS}" ]; then
+ echo "No Ansible Playbooks supplied.. exiting"
+ exit 255
+fi
+for yml in ${ANSIBLE_PLAYBOOKS}; do
+  if [ ! -f "${yml}" ]; then
+    echo "${yml} does not exist.. exiting"
+    exit 255
+  else
+    ansible-playbook -i ${ANSIBLE_INVENTORY} ${yml}
+  fi
+done
+popd
+

@@ -1,4 +1,12 @@
 #!/bin/bash -e
 
 echo "---> Installing source"
-cp -Rf /tmp/src/. ./
+cp -vRf /tmp/src/. ./src/
+echo "---> Deleteing /tmp/src"
+rm -rf /tmp/src
+echo "---> Installing Ansible Galaxy dependencies"
+pushd src/
+for yml in ${ANSIBLE_REQUIREMENTS_YML}; do
+  [[ -f ${yml} ]] && ansible-galaxy install -r ${yml}
+done
+popd
