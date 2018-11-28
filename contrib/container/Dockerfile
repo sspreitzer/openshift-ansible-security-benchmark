@@ -10,8 +10,7 @@ ADD entrypoint /entrypoint
 COPY ./bin/ /usr/libexec/s2i
 
 LABEL io.s2i.scripts-url=image:///usr/libexec/s2i \
-      io.openshift.s2i.scripts-url=image:///usr/libexec/s2i \
-      io.openshift.s2i.destination=/tmp/src
+      io.openshift.s2i.scripts-url=image:///usr/libexec/s2i
 
 USER 1001
 WORKDIR /opt/app-root/src
