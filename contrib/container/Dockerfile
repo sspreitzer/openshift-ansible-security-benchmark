@@ -4,7 +4,7 @@ ENV GITREPO="https://github.com/sspreitzer/openshift-ansible-security-benchmark.
     GITREF="3.9"
 
 RUN yum-config-manager --enable 'rhel-*-server-ansible-*-rpms'; \
-    yum-config yum install -y \
+    yum install -y \
     ansible \
     git \
     && \
