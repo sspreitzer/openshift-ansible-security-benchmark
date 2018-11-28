@@ -1,4 +1,4 @@
-FROM centos:7.5
+FROM rhel:latest
 
 ARG GITREPO="https://github.com/sspreitzer/openshift-ansible-security-benchmark.git" \
     GITREF="3.9"
