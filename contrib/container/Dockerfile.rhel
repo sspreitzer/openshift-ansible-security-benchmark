@@ -1,6 +1,6 @@
 FROM rhel:7.5
 
-RUN yum install -y
+RUN yum install -y \
     ansible \
     git \
     && \
