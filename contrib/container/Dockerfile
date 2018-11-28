@@ -1,12 +1,18 @@
-FROM rhel:latest
-
-ENV GITREPO="https://github.com/sspreitzer/openshift-ansible-security-benchmark.git" \
-    GITREF="3.9"
+FROM rhel:7.4
 
 RUN yum-config-manager --enable 'rhel-*-server-ansible-*-rpms'; \
     yum install -y \
     ansible \
-    git \
     && \
-    rm -rf /var/cache/yum && \
-    git clone -b ${GITREF} ${GITREPO} /opt/openshift-ansible-security-benchmark
+    rm -rf /var/cache/yum 
+
+ADD entrypoint /entrypoint
+COPY ./bin/ /usr/libexec/s2i
+
+LABEL io.s2i.scripts-url=image:///usr/libexec/s2i \
+      io.openshift.s2i.scripts-url=image:///usr/libexec/s2i
+
+USER 1001
+WORKDIR /opt/app-root/src
+ENTRYPOINT ["/entrypoint"]
+CMD ["usage"]

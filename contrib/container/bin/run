@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+ansible-playbook -i inventory run.yml

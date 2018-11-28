@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH=/opt/app-root/src:/usr/libexec/s2i:$PATH
+
+exec $*

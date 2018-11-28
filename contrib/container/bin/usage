@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+cat <<EOF
+This is the ensable S2I image
+EOF
