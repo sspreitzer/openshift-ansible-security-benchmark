@@ -5,5 +5,4 @@ RUN yum install -y \
     git \
     && \
     rm -rf /var/cache/yum && \
-    { cd /opt; git clone https://github.com/sspreitzer/openshift-ansible-security-benchmark.git && git checkout 3.9 }
-
+    git clone -b 3.9 https://github.com/sspreitzer/openshift-ansible-security-benchmark.git /opt/openshift-ansible-security-benchmark
