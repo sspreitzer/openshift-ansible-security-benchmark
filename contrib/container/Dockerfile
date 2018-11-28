@@ -1,6 +1,7 @@
 FROM centos:7.5
 
-RUN yum install -y \
+RUN yum-config-manager --enable 'rhel-*-server-ansible-*-rpms'; \
+    yum-config yum install -y \
     ansible \
     git \
     && \
